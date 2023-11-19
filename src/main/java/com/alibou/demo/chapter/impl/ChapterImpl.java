@@ -1,10 +1,8 @@
 package com.alibou.demo.chapter.impl;
 
-import com.alibou.demo.chapter.Chapter;
+import com.alibou.demo.chapter.model.entities.Chapter;
 import com.alibou.demo.chapter.ChapterRepository;
 import com.alibou.demo.chapter.ChapterService;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 

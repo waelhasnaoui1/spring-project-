@@ -1,6 +1,6 @@
 package com.alibou.demo.subject.impl;
 
-import com.alibou.demo.chapter.Chapter;
+import com.alibou.demo.chapter.model.entities.Chapter;
 import com.alibou.demo.subject.Subject;
 import com.alibou.demo.subject.SubjectRepository;
 import com.alibou.demo.subject.SubjectService;

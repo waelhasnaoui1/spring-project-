@@ -1,4 +1,4 @@
-package com.alibou.demo.student;
+package com.alibou.demo.student.model.entities;
 
 import com.alibou.demo.address.Address;
 import com.alibou.demo.subject.Subject;
@@ -10,8 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +18,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
 
     @Id

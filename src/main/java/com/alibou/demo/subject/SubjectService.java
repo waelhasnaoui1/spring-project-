@@ -1,6 +1,6 @@
 package com.alibou.demo.subject;
 
-import com.alibou.demo.chapter.Chapter;
+import com.alibou.demo.chapter.model.entities.Chapter;
 
 import java.util.List;
 

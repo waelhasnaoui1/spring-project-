@@ -1,4 +1,5 @@
 package com.alibou.demo.chapter;
+import com.alibou.demo.chapter.model.entities.Chapter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.alibou.demo.subject;
 
-import com.alibou.demo.chapter.Chapter;
-import com.alibou.demo.student.Student;
+import com.alibou.demo.chapter.model.entities.Chapter;
+import com.alibou.demo.student.model.entities.Student;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,5 +1,7 @@
 package com.alibou.demo.student;
 
+import com.alibou.demo.student.model.dto.StudentResponse;
+import com.alibou.demo.student.model.entities.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,21 +41,21 @@ public class StudentController {
 
 
     @GetMapping("/{student-id}")
-    public Student findById(
+    public StudentResponse findById(
             @PathVariable("student-id") Integer studentId
     ) {
         return service.findStudentById(studentId);
     }
 
     @GetMapping("/search")
-    public List<Student> findByFirstname(
+    public StudentResponse findByFirstname(
             @RequestParam(value = "fname") String firstname
     ) {
-        return service.findAll();
+        return service.findStudentByFirstName(firstname);
     }
 
     @GetMapping
-    public List<Student> findAll() {
+    public List<StudentResponse> findAll() {
         return service.findAll();
     }
 

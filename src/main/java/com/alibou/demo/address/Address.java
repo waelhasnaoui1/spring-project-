@@ -1,6 +1,6 @@
 package com.alibou.demo.address;
 
-import com.alibou.demo.student.Student;
+import com.alibou.demo.student.model.entities.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

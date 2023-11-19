@@ -1,5 +1,6 @@
 package com.alibou.demo.chapter;
 
+import com.alibou.demo.chapter.model.entities.Chapter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

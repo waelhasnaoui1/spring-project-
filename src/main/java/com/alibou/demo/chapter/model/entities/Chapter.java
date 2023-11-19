@@ -1,4 +1,4 @@
-package com.alibou.demo.chapter;
+package com.alibou.demo.chapter.model.entities;
 
 import com.alibou.demo.subject.Subject;
 import jakarta.persistence.Entity;
