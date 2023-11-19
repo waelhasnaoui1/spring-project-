@@ -1,6 +1,5 @@
 package com.alibou.demo.address;
 
-import com.alibou.demo.subject.Subject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,6 +1,8 @@
 package com.alibou.demo.subject;
 
 import com.alibou.demo.chapter.model.entities.Chapter;
+import com.alibou.demo.subject.model.dto.SubjectResponse;
+import com.alibou.demo.subject.model.entities.Subject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +19,17 @@ public class SubjectController {
     }
 
     @GetMapping()
-    public List<Subject> getAllSubjects(){
+    public List<SubjectResponse> getAllSubjects(){
         return subjectService.findAll();
     }
 
     @GetMapping("{id}")
-    public Subject getSubjectById(@PathVariable("id") int id){
+    public SubjectResponse getSubjectById(@PathVariable("id") int id){
         return subjectService.findSubjectById(id);
     }
 
     @PostMapping()
-    public Subject crateChapter (@RequestBody Subject subject){
+    public SubjectResponse crateChapter (@RequestBody Subject subject){
         return subjectService.saveSubject(subject);
     }
 

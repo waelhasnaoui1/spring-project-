@@ -5,8 +5,9 @@ import com.alibou.demo.student.model.entities.Student;
 import com.alibou.demo.student.StudentRepository;
 import com.alibou.demo.student.StudentService;
 import com.alibou.demo.student.model.mapper.StudentMapper;
-import com.alibou.demo.subject.Subject;
+import com.alibou.demo.subject.model.entities.Subject;
 import com.alibou.demo.subject.SubjectService;
+import com.alibou.demo.subject.model.mapper.SubjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,10 +22,13 @@ public class StudentServiceImpl implements StudentService {
 
     private final StudentMapper studentMapper;
 
-    public StudentServiceImpl(StudentRepository studentRepository, SubjectService subjectService, StudentMapper studentMapper) {
+    private final SubjectMapper subjectMapper;
+
+    public StudentServiceImpl(StudentRepository studentRepository, SubjectService subjectService, StudentMapper studentMapper, SubjectMapper subjectMapper) {
         this.studentRepository = studentRepository;
         this.subjectService = subjectService;
         this.studentMapper = studentMapper;
+        this.subjectMapper = subjectMapper;
     }
 
     @Override
@@ -54,7 +58,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void subscribeToSubject(Integer id, Integer subjectId) {
         Student existStudent = this.studentRepository.findById(id).get();
-        Subject existSubject = subjectService.findSubjectById(subjectId);
+        Subject existSubject = subjectMapper.toSubject(subjectService.findSubjectById(subjectId));
 
         List<Subject> listSubject = existStudent.getSubjects();
 

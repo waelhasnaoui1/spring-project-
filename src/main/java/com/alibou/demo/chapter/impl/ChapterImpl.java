@@ -1,33 +1,44 @@
 package com.alibou.demo.chapter.impl;
 
+import com.alibou.demo.chapter.model.dto.ChapterResponse;
 import com.alibou.demo.chapter.model.entities.Chapter;
 import com.alibou.demo.chapter.ChapterRepository;
 import com.alibou.demo.chapter.ChapterService;
+import com.alibou.demo.chapter.model.mapper.ChapterMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ChapterImpl implements ChapterService {
 
     private final ChapterRepository chapterRepository;
 
-    public ChapterImpl(ChapterRepository chapterRepository){
+    private final ChapterMapper chapterMapper;
+
+    public ChapterImpl(ChapterRepository chapterRepository, ChapterMapper chapterMapper){
 
         this.chapterRepository = chapterRepository;
+        this.chapterMapper = chapterMapper;
     }
 
     @Override
-    public Chapter save(Chapter chapter) {
-        return chapterRepository.save(chapter);
+    public ChapterResponse save(Chapter chapter) {
+        return chapterMapper.toChapterResponse(chapterRepository.save(chapter));
     }
 
     @Override
-    public Chapter findById(int id) {
-        return chapterRepository.findById(id).get();
+    public ChapterResponse findById(int id) {
+        Chapter chapter = chapterRepository.findById(id).get();
+        return chapterMapper.toChapterResponse(chapter);
     }
 
     @Override
-    public List<Chapter> findAll() {
-        return chapterRepository.findAll();
+    public List<ChapterResponse> findAll() {
+        return chapterRepository.findAll()
+                .stream()
+                .map(chapterMapper::toChapterResponse)
+                .collect(Collectors.toList());
+
     }
 
     @Override
@@ -37,7 +48,7 @@ public class ChapterImpl implements ChapterService {
 
     @Override
     public void update(Chapter chapter) {
-        Chapter existChapter = findById(chapter.getId());
+        Chapter existChapter = chapterRepository.findById(chapter.getId()).get();
 
         if (existChapter != null){
             existChapter.setName(chapter.getName());

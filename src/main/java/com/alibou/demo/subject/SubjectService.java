@@ -1,15 +1,17 @@
 package com.alibou.demo.subject;
 
 import com.alibou.demo.chapter.model.entities.Chapter;
+import com.alibou.demo.subject.model.dto.SubjectResponse;
+import com.alibou.demo.subject.model.entities.Subject;
 
 import java.util.List;
 
 public interface SubjectService {
-    Subject saveSubject(Subject subject);
+    SubjectResponse saveSubject(Subject subject);
 
-    Subject findSubjectById(int id);
+    SubjectResponse findSubjectById(int id);
 
-    List<Subject> findAll();
+    List<SubjectResponse> findAll();
 
     void deleteById(Integer id);
 

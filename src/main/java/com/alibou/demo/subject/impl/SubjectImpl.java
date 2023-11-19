@@ -1,36 +1,48 @@
 package com.alibou.demo.subject.impl;
 
 import com.alibou.demo.chapter.model.entities.Chapter;
-import com.alibou.demo.subject.Subject;
+import com.alibou.demo.subject.model.dto.SubjectResponse;
+import com.alibou.demo.subject.model.entities.Subject;
 import com.alibou.demo.subject.SubjectRepository;
 import com.alibou.demo.subject.SubjectService;
+import com.alibou.demo.subject.model.mapper.SubjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SubjectImpl implements SubjectService {
 
     private final SubjectRepository subjectRepository;
 
-    public SubjectImpl(SubjectRepository subjectRepository) {
+    private final SubjectMapper subjectMapper;
+
+    public SubjectImpl(SubjectRepository subjectRepository, SubjectMapper subjectMapper) {
         this.subjectRepository = subjectRepository;
+        this.subjectMapper = subjectMapper;
     }
 
     @Override
-    public Subject saveSubject(Subject subject) {
-        return subjectRepository.save(subject);
+    public SubjectResponse saveSubject(Subject subject) {
+
+        return subjectMapper.toSubjectResponse(subjectRepository.save(subject));
     }
 
     @Override
-    public Subject findSubjectById(int id) {
-        return subjectRepository.findById(id).get();
+    public SubjectResponse findSubjectById(int id) {
+        return subjectMapper.toSubjectResponse(subjectRepository.findById(id).get());
     }
 
     @Override
-    public List<Subject> findAll() {
-        return subjectRepository.findAll();
+    public List<SubjectResponse> findAll() {
+        return subjectRepository.findAll()
+                .stream()
+                .map(subjectMapper::toSubjectResponse)
+                .collect(Collectors.toList());
     }
+
+
 
     @Override
     public void deleteById(Integer id) {
@@ -39,7 +51,7 @@ public class SubjectImpl implements SubjectService {
 
     @Override
     public void update(Subject subject) {
-        Subject existSubject = findSubjectById(subject.getId());
+        Subject existSubject = subjectRepository.findById(subject.getId()).get();
 
         if (existSubject != null){
             existSubject.setName(subject.getName());
@@ -52,7 +64,7 @@ public class SubjectImpl implements SubjectService {
 
     @Override
     public List<Chapter> getChaptersByCourseId(int id) {
-        Subject subject = findSubjectById(id);
+        Subject subject = subjectRepository.findById(id).get();
         return subject.getChapters();
     }
 }

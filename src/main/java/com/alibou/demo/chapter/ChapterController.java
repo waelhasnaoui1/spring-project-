@@ -1,5 +1,6 @@
 package com.alibou.demo.chapter;
 
+import com.alibou.demo.chapter.model.dto.ChapterResponse;
 import com.alibou.demo.chapter.model.entities.Chapter;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +17,17 @@ public class ChapterController {
     }
 
     @GetMapping()
-    public List<Chapter> getAllChapter (){
+    public List<ChapterResponse> getAllChapter (){
         return this.chapterService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Chapter getChapterById(@PathVariable("id") int id){
+    public ChapterResponse getChapterById(@PathVariable("id") int id){
         return chapterService.findById(id);
     }
 
     @PostMapping()
-    public Chapter crateChapter (@RequestBody Chapter chapter){
+    public ChapterResponse crateChapter (@RequestBody Chapter chapter){
         return chapterService.save(chapter);
     }
 

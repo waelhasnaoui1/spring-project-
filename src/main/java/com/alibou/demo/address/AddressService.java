@@ -1,7 +1,5 @@
 package com.alibou.demo.address;
 
-import com.alibou.demo.subject.Subject;
-
 import java.util.List;
 
 public interface AddressService {

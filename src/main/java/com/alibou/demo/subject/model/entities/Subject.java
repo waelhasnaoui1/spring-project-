@@ -1,4 +1,4 @@
-package com.alibou.demo.subject;
+package com.alibou.demo.subject.model.entities;
 
 import com.alibou.demo.chapter.model.entities.Chapter;
 import com.alibou.demo.student.model.entities.Student;
@@ -8,14 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Subject {
 
     @Id

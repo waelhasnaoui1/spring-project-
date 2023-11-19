@@ -1,7 +1,7 @@
 package com.alibou.demo.student.model.entities;
 
 import com.alibou.demo.address.Address;
-import com.alibou.demo.subject.Subject;
+import com.alibou.demo.subject.model.entities.Subject;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
